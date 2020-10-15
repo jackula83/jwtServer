@@ -1,0 +1,13 @@
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\bin\Debug\netcoreapp3.1\appsettings.Development.json
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\bin\Debug\netcoreapp3.1\appsettings.json
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\bin\Debug\netcoreapp3.1\JwtServer.exe
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\obj\Debug\netcoreapp3.1\JwtServer.csprojAssemblyReference.cache
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\obj\Debug\netcoreapp3.1\JwtServer.AssemblyInfoInputs.cache
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\obj\Debug\netcoreapp3.1\JwtServer.AssemblyInfo.cs
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\obj\Debug\netcoreapp3.1\JwtServer.RazorTargetAssemblyInfo.cache
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\obj\Debug\netcoreapp3.1\staticwebassets\JwtServer.StaticWebAssets.Manifest.cache
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\obj\Debug\netcoreapp3.1\staticwebassets\JwtServer.StaticWebAssets.xml
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+S:\Workspaces\Vortex\Application\Beanstalk\JwtServer\obj\Debug\netcoreapp3.1\JwtServer.csproj.CopyComplete
