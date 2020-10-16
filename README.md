@@ -28,10 +28,10 @@ See a simple "hello" message.
 #### POST
 
 Get a JWT token returned with Body:
-```j
+```json
 [
   {"claimType":"emailAddress", "claimValue":"jackula@83.com"},
-	{"claimType":"userName", "claimValue":"jackula83"},
+  {"claimType":"userName", "claimValue":"jackula83"},
 ]
 ```
 
