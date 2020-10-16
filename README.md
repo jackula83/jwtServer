@@ -12,8 +12,10 @@ JwtServer.Tests - XUnit test harness for the server API.
 ## Postman Examples:
 
 Note for all requests to any of the server, the following header will need to be used:
-> Content-Type: application/json
-> PublicAuthToken: PublicSecret
+```
+Content-Type: application/json
+PublicAuthToken: PublicSecret
+```
 
 ### JwtTokenServer URL
 
@@ -26,10 +28,12 @@ See a simple "hello" message.
 #### POST
 
 Get a JWT token returned with Body:
-> [
-> 	{"claimType":"emailAddress", "claimValue":"jackula@83.com"},
-> 	{"claimType":"userName", "claimValue":"jackula83"},
-> ]
+```j
+[
+  {"claimType":"emailAddress", "claimValue":"jackula@83.com"},
+	{"claimType":"userName", "claimValue":"jackula83"},
+]
+```
 
 ### JwtQueryServer URLs
 
