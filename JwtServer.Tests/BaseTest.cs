@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -40,14 +41,15 @@ namespace JwtServer.Tests
       /// <param name="a_func">the delegate for the function being tested</param>
       /// <param name="a_testDataOverride">if null then will use the default test data initialised in <see cref="BuildTestData" />, otherwise the json provided will be used instead</param>
       /// <returns>the Action result as returned by the function being tested</returns>
-      protected virtual async Task<ActionResult> RunTestAsync<TInputType>(TestDelegate<TInputType> a_func, string a_testDataOverride = null)
+      protected virtual async Task<ActionResult> RunTestAsync<TInputType>(TestDelegate<TInputType> a_func, string a_testDataOverride = null, [CallerMemberName] string a_callingMethod = null)
       {
+         Assert.NotNull(a_callingMethod);
+
          // calling method name
          StackTrace stackTrace = new StackTrace();
-         string callingMethodName = this.GetCallingMethod();
 
          // get the test data
-         TInputType testData = this.GetTestData<TInputType>(callingMethodName, a_testDataOverride);
+         TInputType testData = this.GetTestData<TInputType>(a_callingMethod, a_testDataOverride);
 
          // invoke and return results
          return await Task.Run(() => a_func(testData));
@@ -80,46 +82,6 @@ namespace JwtServer.Tests
          return "{" + string.Join(',', objList.ToArray()) + "}";
       }
       #endregion // Test Data Builders
-
-      #region Helper Methods
-      /// <summary>
-      /// Gets the test method that invoked the base class
-      /// </summary>
-      /// <returns></returns>
-      private string GetCallingMethod()
-      {
-         MethodBase method = MethodInfo.GetCurrentMethod();
-
-         StackTrace stackTrace = new StackTrace();
-         for (int i = 0; i < stackTrace.FrameCount && stackTrace.GetFrame(i).GetMethod().DeclaringType != null; ++i)
-         {
-            Type declaringType = stackTrace.GetFrame(i).GetMethod().DeclaringType;
-            string fullname = FullName(declaringType.FullName);
-
-            // is of the test name space but isn't the name of the current class
-            if (fullname.StartsWith(method.DeclaringType.Namespace) && fullname != method.DeclaringType.FullName)
-            {
-               string methodName = stackTrace.GetFrame(i).GetMethod().Name;
-
-               return methodName
-                  .Remove(methodName.IndexOf('>'))
-                  .Substring(1);
-            }
-         }
-
-         return default;
-      }
-
-      /// <summary>
-      /// Gets the name without all the funny symbols
-      /// </summary>
-      /// <param name="a_fullName">the fullname string from MethodBase.DeclaringType.FullName</param>
-      /// <returns>the name of the declaring type without all the modifiers</returns>
-      private string FullName(string a_fullName)
-      {
-         return a_fullName.Contains('+') ? a_fullName.Remove(a_fullName.IndexOf('+')) : a_fullName;
-      }
-      #endregion // Helper Methods
 
       #region Abstracts
       /// <summary>
