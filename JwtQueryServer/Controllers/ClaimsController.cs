@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JwtUtilities.BaseClasses;
 using JwtUtilties.Helpers;
 using JwtUtilties.Models;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ namespace JwtQueryServer.Controllers
 {
    [Route("[controller]")]
    [ApiController]
-   public class ClaimsController : ControllerBase
+   public class ClaimsController : CommonController
    {
 #if DEBUG
       /// <summary>
@@ -31,9 +32,9 @@ namespace JwtQueryServer.Controllers
       /// <param name="a_token">token string, quoteless</param>
       /// <returns>a list of tokens in format of [{"claimType":"claimValue"}...]</returns>
       [HttpPost]
-      public async Task<List<JwtClaim>> Post([FromBody] string a_token)
+      public async Task<ActionResult> Post([FromBody] string a_token)
       {
-         return await Task.Run(() => JwtUtils.Get(a_token));
+         return await this.RunAsync(() => JwtUtils.Get(a_token));
       }
    }
 }

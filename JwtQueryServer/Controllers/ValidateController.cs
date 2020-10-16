@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using JwtUtilities.BaseClasses;
 using JwtUtilties.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,7 +12,7 @@ namespace JwtQueryServer.Controllers
 {
    [Route("[controller]")]
    [ApiController]
-   public class ValidateController : ControllerBase
+   public class ValidateController : CommonController
    {
 #if DEBUG
       /// <summary>
@@ -28,9 +32,9 @@ namespace JwtQueryServer.Controllers
       /// <param name="a_token">token string, quote-less</param>
       /// <returns>true if successfully validated, false otherwise</returns>
       [HttpPost]
-      public async Task<bool> Post([FromBody] string a_token)
+      public async Task<ActionResult> Post([FromBody] string a_token)
       {
-         return await Task.Run(() => JwtUtils.ValidateToken(a_token)) != default;
+         return await this.RunAsync(() => JwtUtils.ValidateToken(a_token) != default);
       }
    }
 }

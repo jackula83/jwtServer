@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using JwtUtilities.BaseClasses;
 using JwtUtilties.Helpers;
 using JwtUtilties.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace JwtTokenServer.Controllers
 {
    [Route("[controller]")]
    [ApiController]
-   public class GenerateController : ControllerBase
+   public class GenerateController : CommonController
    {
 #if DEBUG
       /// <summary>
@@ -33,15 +34,7 @@ namespace JwtTokenServer.Controllers
       [HttpPost]
       public async Task<ActionResult> Post([FromBody] List<JwtClaim> a_payload)
       {
-         try
-         {
-            string token = await Task.Run(() => JwtUtils.GenerateToken(a_payload));
-            return Content(JsonConvert.SerializeObject(token), Application.Json);
-         }
-         catch (Exception ex)
-         {
-            return BadRequest(ex);
-         }
+         return await this.RunAsync(() => JwtUtils.GenerateToken(a_payload));
       }
    }
 }
