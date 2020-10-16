@@ -11,7 +11,7 @@ A JWT server using CQRS for scalability, use this instead of built-in JWT functi
 
 ## Postman Examples:
 
-Note for all requests to any of the server, the following header will need to be used:
+Note for all requests to any of the server, the following header will need to be used in debugging mode:
 ```
 Content-Type: application/json
 PublicAuthToken: PublicSecret
@@ -56,3 +56,10 @@ Claims: Get a list of claims returned with Body:
 > "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 
 (these are example JWT tokens, use the Generate endpoint to get the token, otherwise Verify will return Invalid and Claims will return null)
+
+## Enviornment Variables
+
+A full list of environment variables can be found in:
+```c#
+JwtUtilities.Helpers.EnvironmentVariables
+```
