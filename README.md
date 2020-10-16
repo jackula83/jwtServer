@@ -4,10 +4,10 @@ A JWT server using CQRS for scalability, use this instead of built-in JWT functi
 
 ## Projects:
 
-JwtTokenServer - by default runs on *:5001, issues JWT tokens.
-JwtQueryServer - by default runs on *:5002, validates JWT tokens and retrieves claims from valid JWT tokens.
-JwtUtilties - some common utililities and base classes.
-JwtServer.Tests - XUnit test harness for the server API.
+- JwtTokenServer - by default runs on *:5001, issues JWT tokens.
+- JwtQueryServer - by default runs on *:5002, validates JWT tokens and retrieves claims from valid JWT tokens.
+- JwtUtilties - some common utililities and base classes.
+- JwtServer.Tests - XUnit test harness for the server API.
 
 ## Postman Examples:
 
