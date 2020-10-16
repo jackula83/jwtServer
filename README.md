@@ -1,4 +1,4 @@
-# gm-Vortex
+# JWTServer
 
 A JWT server using CQRS for scalability, use this instead of built-in JWT functions (i.e. AWS Cognito) to remain cloud-agnostic.
 
