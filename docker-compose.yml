@@ -3,17 +3,17 @@ services:
   tests:
     build:
       context: .
-      dockerfile: Dockerfile.tests.dev
+      dockerfile: Docker/Dockerfile.tests.dev
     command: ['dotnet', 'test', './JwtServer.Tests']
   tokenserver:
     build:
       context: .
-      dockerfile: Dockerfile.tokenserver.dev
+      dockerfile: Docker/Dockerfile.tokenserver.dev
     restart: always
   queryserver:
     build:
       context: .
-      dockerfile: Dockerfile.queryserver.dev
+      dockerfile: Docker/Dockerfile.queryserver.dev
     restart: always
   nginx:
     restart: always
