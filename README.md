@@ -2,6 +2,13 @@
 
 A JWT server using CQRS for scalability, use this instead of built-in JWT functions (i.e. AWS Cognito) to remain cloud-agnostic.
 
+Run, in the root directory:
+```
+docker-compose up --build
+```
+to run in debugging mode.
+
+
 ## Projects:
 
 - JwtTokenServer - by default runs on *:5001, issues JWT tokens.
