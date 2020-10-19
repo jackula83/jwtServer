@@ -26,7 +26,7 @@ PublicAuthToken: PublicSecret
 
 ### JwtTokenServer URL
 
-> localhost:5001/Generate/
+> localhost:1234/auth/Generate/
 
 ### Actions
 #### GET
@@ -45,10 +45,10 @@ Get a JWT token returned with Body:
 ### JwtQueryServer URLs
 
 For token verification:
-> localhost:5002/Verify
+> localhost:1234/auth/Verify
 
 For claims retrieval:
-> localhost:5002/Claims
+> localhost:1234/auth/Claims
 
 ### Actions
 #### GET
