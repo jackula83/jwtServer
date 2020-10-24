@@ -1,0 +1,35 @@
+language: generic
+sudo: required
+services:
+  - Docker
+
+# build tests
+before_install:
+  - docker build -t jackula83/jwt-tests -f ./Docker/Dockerfile.tests.dev .
+# run tests
+script:
+  - docker run -e CI=true jackula83/jwt-tests dotnet test ./JwtServer.Tests
+
+# build prod
+after_success:
+  - docker build -t jackula83/jwt-query-server -f ./Docker/Dockerfile.queryserver .
+  - docker build -t jackula83/jwt-token-server -f ./Docker/Dockerfile.tokenserver .
+  - docker build -t jackula83/jwt-nginx ./Nginx
+  # login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
+  # put built images to docker hub
+  - docker push jackula83/jwt-query-server
+  - docker push jackula83/jwt-token-server
+  - docker push jackula83/jwt-nginx
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: jwt-server
+  env: geekmotors-env
+  bucket_name: elasticbeanstalk-us-east-2-149033151268
+  bucket_path: jwt-server
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

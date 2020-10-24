@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "queryserver",
+      "image": "jackula83/jwt-query-server",
+      "hostname": "queryserver",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "tokenserver",
+      "image": "jackula83/jwt-token-server",
+      "hostname": "tokenserver",
+      "essential": false,
+      "memory": 64
+    },
+    {
+      "name": "nginx",
+      "image": "jackula83/jwt-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "memory": 64,
+      "portMappings": [
+        {
+          "hostPort": 1234,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "queryserver",
+        "tokenserver"
+      ]
+    }
+  ]
+}
