@@ -21,7 +21,7 @@ namespace JwtUtilties.Helpers
 #if DEBUG
             "PublicSecret"
 #else
-            Environment.GetEnvironmentVariable("AUTH_ACCESS_TOKEN")
+            Environment.GetEnvironmentVariable("AUTH_ACCESS_TOKEN_SECRET")
 #endif
             );
 
