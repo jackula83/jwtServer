@@ -10,11 +10,13 @@ services:
       context: .
       dockerfile: Docker/Dockerfile.tokenserver.dev
     restart: always
+    image: jackula83/jwt-token-server
   queryserver:
     build:
       context: .
       dockerfile: Docker/Dockerfile.queryserver.dev
     restart: always
+    image: jackula83/jwt-query-server
   nginx:
     restart: always
     build:
@@ -22,3 +24,4 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - '1234:80'
+    image: jackula83/jwt-nginx
